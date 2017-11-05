@@ -1,0 +1,21 @@
+
+<section class = "share">
+	<div class="publish">
+		<form name = "haha">
+	<!-- 	"common":String,
+   "img":String,
+   "music":String -->
+			<textarea name="discript" ng-model = "data.common" cols="20" rows="5"></textarea>
+			<p><span ng-click = "postInfo()">分享</span></p>
+		</form>
+	</div>
+	<ul class="sharelist" >
+		<li ng-repeat = "item in list">
+			<span class="headPortrait"><img src=""></span>
+			<span class="nickname">1234dwf</span>
+			<p class="comment">{{item.common}}</p>
+			<div class="music">wdvfee</div>
+			<div class="img">qgfebgrnr</div>
+		</li>
+	</ul>
+</section>

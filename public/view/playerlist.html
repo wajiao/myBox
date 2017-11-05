@@ -1,0 +1,12 @@
+
+
+<section class="playerlist">
+	<h4>| 歌单分享</h4>
+	<ul class="playerlist" ng-repeat = "item in list">
+		<li>
+			<img ng-src = "img/playerlist/{{item.url}}">
+			<div class="subtext">{{item.title}}</div>
+			<span class="author">{{item.publisher}}</span>
+		</li>
+	</ul>
+</section>

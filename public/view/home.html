@@ -1,0 +1,49 @@
+<div class="home" >
+	<section class="banner ">
+	<ul class="img clearfix">
+		<a ng-href="">
+		<li ng-repeat = "item in img"><img ng-src="img/home/{{item.url}}" ></li>
+		</a>
+	</ul>
+	</section>
+	<section class="newSong">
+	<h2 class="fist"> 新歌首发</h2>
+	<div class="blank">
+
+		<ul class="song" >
+		<a ng-href="">
+		<li ng-repeat = "item in song">
+		<div class="img"><img ng-src="img/home/{{item.url}}"></div>
+		<span class="name">{{item.name}}</span>
+		<span class="singer">{{item.singer}}</span>
+		</li>
+		</a>
+	</ul>
+	</div>
+	
+	</section>
+	<section class="newAlbum">
+	<h2> 专辑首发</h2>
+	<ul class="album" ng-repeat = "item in album">
+		<a ng-href="">
+		<li>
+		<div class="img"><img ng-src="img/home/{{item.url}}"></div>
+		<span class="name">{{item.name}}</span>
+		<span class="singer">{{item.singer}}</span>
+		</li>
+		</a>
+	</ul>
+	</section>
+	<section class="hotList">
+	<h2> 热门推荐</h2>
+	<ul class="hotlist" ng-repeat = "item in hotlist">
+		<a ng-href="">
+		<li>
+		<div class="img"><img ng-src="img/home/{{item.url}}"></div>
+		<span class="name">{{item.name}}</span>
+		<span class="singer">{{item.singer}}</span>
+		</li>
+		</a>
+	</ul>
+	</section>
+</div>

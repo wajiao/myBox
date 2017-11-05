@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1">
+	<title>MyBox</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+<!-- <div ng-app="myapp" ng-controller="MyCtrl">
+    <span class="action"
+          ng-click="increment()"
+          ng-right-click="decrement()">{{value}}</span>    
+</div> -->
+	<div class="app" ng-app = "myApp">
+		<section class="search">
+			
+				<span><</span>
+				<span>></span>
+				<input type="text" name="" placeholder="search">
+			
+		</section>
+		<section class= "slider" ng-controller = "sliderCtrl">
+			<div class="myId">
+				<div class="photo"></div>
+				<div class="info" id = "login" ng-click="goToLogin()" ng-bind="str"></div>
+			</div>
+			<h6>音乐馆</h6>
+			<ul class="musicHouse">
+
+				<a ng-href="#/home"><li>精选</li></a>
+				<a ng-href="#/playerlist" ><li>歌单</li></a>
+				<a ng-href="#/share"><li>分享馆</li></a>
+			</ul>
+			<h6>我的歌单 <span ng-click = "add()">+</span></h6>
+			<ul class="Playlist" ng-repeat = "item in list">
+				
+				<a ng-href="#/list/{{item.id}}"><li>歌单{{item.id}}</li></a>
+
+			</ul>
+		</section>
+		<section class="main" ui-view ></section>
+		<section class="player" ng-controller = "playerCtrl">
+
+			<!-- <p><span>L</span><span class="circle"></span><span class="sanjiao"><span>R</span></span> -->
+			<audio src = "mp3/a.mp3" ></audio>
+			<audio src = "mp3/nervous.mp3" ></audio>
+			<audio src = "mp3/beautiful.mp3" ></audio>
+			<audio src = "mp3/cut.mp3" ></audio>
+			<!-- </p> -->
+			<p><span class="last" ng-click = "last()"></span>
+				<span class="current" ng-click = "toggle()"></span>
+				<span class="next" ng-click = "next()"></span>
+				<span class="music" ng-click = "show()"></span>
+				<span class="bar">
+				<span class="kuai" ></span>
+			</p>
+			<div class="pannal">
+				<span class="close" ng-click = "close()" >X</span>
+				<div class="img"><img src="img/player/02.jpg"></div>
+				<ul class="content">
+					<li ng-repeat = "item in list">{{item.line}}</li>
+				</ul>
+			</div>
+			
+		</section>
+	</div>
+	
+	<script type="text/javascript" src = "js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src = "js/underscore.js"></script>
+	<script type="text/javascript" src = "js/angular-1-4-1.js"></script>
+	<script type="text/javascript" src = "js/angular-ui-router.js"></script>
+	<script type="text/javascript" src = "js/app.js"></script>
+	<script type="text/javascript">
+		// var index = 0;
+		// var media = $("audio");
+		// var statee = false ;
+		// setInterval(function(){
+		// 	var rate = media[index].currentTime /media[index].duration;
+		// 	var dis = rate * 400
+			
+		// 	$(".kuai").css("width",dis+30);
+		// 	if(rate > 0.0831){
+		// 		statee = true ;
+		// 	}else if (rate > 0.9){
+		// 		statee = false;
+
+		// 	}
+			
+		// })
+	
+		// var haha = 0;
+		// var words ,idx;
+		// setTimeout(function(){
+
+		// 	$(".close").on("tap",function(){
+			
+		// 	$(".pannal").css("display","none")
+		// })
+
+		// 	words = $(".content li")
+		// 	idx = 2;
+		// 	setInterval(function(){
+		// 	console.log(statee)
+		// 	if(statee){
+		// 		haha +=36;
+		// 		idx++;
+		// 		words[(idx-1)].style.color = "#222";
+		// 		words[idx].style.color = "#fff";
+
+		// 		$(".content li").css("transform","translateY("+ -haha +"px)")
+		// 	}
+		// 	},4500)
+		// },1000)
+		// $(".last").on("tap",function(){
+			
+		// 	media[index].pause()
+		// 	index = index <= 0 ? 0 : --index
+			
+		// 	media[index].load();
+		// 	media[index].play()
+		// })
+		// $(".next").on("tap",function(){
+		// 	media[index].pause()
+		// 	index = index >= 3 ? 3 : ++index
+		// 	media[index].load()
+		// 	media[index].play();
+			
+			
+		// })
+		// var state = "off";
+		// $(".current").on("tap",function(){
+
+		// 	if(state === "off"){
+		// 		console.log("ok")
+		// 		media[index].play();
+		// 		state = "on"
+		// 	}else if(state === "on"){
+		// 		media[index].pause();
+		// 		state = "off"
+		// 	}	
+			
+		// })
+		// $(".music").on("tap",function(){
+		// 	$(".pannal").css("display","block")
+		// })
+		
+		// this.dom.addEventListener("touchstart",function(event){
+		// 	me.touchStarthandler(event);
+		// },false)
+		// this.dom.addEventListener("touchmove",function(event){
+		// 	me.touchMovehandler(event);
+		// },false)
+		// this.dom.addEventListener("touchend",function(event){
+		// 	me.touchEndhandler(event);
+		// },false)
+
+		// $(".kuai")[0].addEventListener("touchstart",touchStart,true)
+		// $(".kuai")[0].addEventListener("touchmove",touchMove,true)
+		// $(".kuai")[0].addEventListener("touchend",touchEnd,true)
+		// // media.eq("index").play();
+		// // console.log(parseInt(media.currentTime))
+		// var startX;
+		// var dx;
+		// function touchStart(event){
+		// 	console.log(1);
+		// 	var finger = event.touches;
+		// 	startX = finger[0].clientX ;
+		// 	console.log(startX);
+		// 	$(".kuai").css("transform","translateX("+(startX - 300)+"px)")
+		// }
+		// function touchMove(event){
+			
+		// 	var finger = event.touches;
+		// 	dx = finger[0].clientX - startX;
+		// 	console.log(dx)
+		// 	$(".kuai").css("transform","translateX("+dx+"px)")
+		// 	$(".kuai").css("left",dx)
+		// 	// console.log($(".kuai").css("left"))
+		// 	// $(".kuai").css("width",(dx+30))
+		// 	// if(finger[0].clientX < 300 ){
+		// 	// 	$(".kuai").css("transform","none")
+		// 	// 	// $(".kuai").css("width",30)
+		// 	// }else if(finger[0].clientX > 700){
+		// 	// 	$(".kuai").css("transform","400px")
+		// 	// 	// $(".kuai").css("width",400+30)
+		// 	// };
+			
+		// }
+		// function touchEnd(event){
+
+			
+		// }
+
+
+	</script>
+</body>
+</html>
